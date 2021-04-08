@@ -60,6 +60,7 @@ func main() {
 	if config, err = ibbq.NewConfiguration(60*time.Second, 5*time.Minute); err != nil {
 		logger.Fatal("Error creating configuration", "err", err)
 	}
+	logger.Debug("3")
 	if bbq, err = ibbq.NewIbbq(ctx, config, disconnectedHandler(cancel, done), temperatureReceived, batteryLevelReceived, statusUpdated); err != nil {
 		logger.Fatal("Error creating iBBQ", "err", err)
 	}

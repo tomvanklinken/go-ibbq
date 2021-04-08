@@ -16,11 +16,11 @@
 package ibbq
 
 import (
-	"github.com/go-ble/ble"
+   "github.com/JuulLabs-OSS/ble"
 	"github.com/tomvanklinken/go-ibbq/os"
 )
 
-// NewDevice creates a new device
-func NewDevice(impl string) (d ble.Device, err error) {
-	return os.DefaultDevice()
+// NewDevice ...
+func NewDevice(impl string, opts ...ble.Option) (d ble.Device, err error) {
+   return os.DefaultDevice(opts...)
 }

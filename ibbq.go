@@ -23,7 +23,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/go-ble/ble"
+	"github.com/JuulLabs-OSS/ble"
+	"fmt"
 )
 
 // Ibbq is an instance of the thermometer
@@ -57,7 +58,6 @@ type StatusUpdatedHandler func(Status)
 
 // NewIbbq creates a new Ibbq
 func NewIbbq(ctx context.Context, config Configuration, disconnectedHandler DisconnectedHandler, temperatureReceivedHandler TemperatureReceivedHandler, batteryLevelReceivedHandler BatteryLevelReceivedHandler, statusUpdatedHandler StatusUpdatedHandler) (ibbq Ibbq, err error) {
-	logger.Debug("NewIbbq()")
 	d, err := NewDevice("default")
 	ble.SetDefaultDevice(d)
 	return Ibbq{ctx, config, d, disconnectedHandler, temperatureReceivedHandler, batteryLevelReceivedHandler, statusUpdatedHandler, nil, nil, nil, Disconnected}, err
@@ -370,7 +370,9 @@ func (ibbq *Ibbq) Disconnect(force bool) error {
 
 func filter() ble.AdvFilter {
 	return func(a ble.Advertisement) bool {
-		return strings.ToLower(a.LocalName()) == strings.ToLower(DeviceName) && a.Connectable()
+		//return strings.ToLower(a.LocalName()) == strings.ToLower(DeviceName) && a.Connectable()
+		fmt.Printf("%v\n", a.Addr())
+		return  strings.ToLower(fmt.Sprintf("%v", a.Addr())) == strings.ToLower("0cd6bca799b94511879f5b29898197e3") && a.Connectable()
 	}
 }
 
