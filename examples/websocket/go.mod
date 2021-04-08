@@ -8,11 +8,11 @@ require (
 	github.com/containous/flaeg v1.4.1
 	github.com/containous/staert v3.1.2+incompatible
 	github.com/gin-gonic/gin v1.4.0
-	github.com/go-ble/ble v0.0.0-20181002102605-e78417b510a3
+	github.com/go-ble/ble latest
 	github.com/gorilla/websocket v1.4.0
 	github.com/mgutz/logxi v0.0.0-20161027140823-aebf8a7d67ab
 	github.com/ogier/pflag v0.0.1 // indirect
-	github.com/sworisbreathing/go-ibbq/v2 v2.0.0
+	github.com/tvanklinken/go-ibbq latest
 	golang.org/x/sync v0.0.0-20190423024810-112230192c58
 )
 
