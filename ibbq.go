@@ -57,6 +57,7 @@ type StatusUpdatedHandler func(Status)
 
 // NewIbbq creates a new Ibbq
 func NewIbbq(ctx context.Context, config Configuration, disconnectedHandler DisconnectedHandler, temperatureReceivedHandler TemperatureReceivedHandler, batteryLevelReceivedHandler BatteryLevelReceivedHandler, statusUpdatedHandler StatusUpdatedHandler) (ibbq Ibbq, err error) {
+	logger.Debug("NewIbbq()")
 	d, err := NewDevice("default")
 	ble.SetDefaultDevice(d)
 	return Ibbq{ctx, config, d, disconnectedHandler, temperatureReceivedHandler, batteryLevelReceivedHandler, statusUpdatedHandler, nil, nil, nil, Disconnected}, err
